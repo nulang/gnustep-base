@@ -384,7 +384,7 @@ static NSString *_time_zone_path(NSString *subpath, NSString *type)
 
 - (id) autorelease
 {
-  NSWarnLog(@"-autorelease sent to uninitialised time zone");
+  // NSWarnLog(@"-autorelease sent to uninitialised time zone");
   return self;		// placeholders never get released.
 }
 

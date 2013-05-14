@@ -1065,7 +1065,7 @@ static Class	GSInlineArrayClass;
 
 - (id) autorelease
 {
-  NSWarnLog(@"-autorelease sent to uninitialised array");
+  // NSWarnLog(@"-autorelease sent to uninitialised array");
   return self;		// placeholders never get released.
 }
 

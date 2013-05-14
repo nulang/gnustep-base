@@ -689,7 +689,7 @@ static NSLock			*placeholderLock;
 
 - (id) autorelease
 {
-  NSWarnLog(@"-autorelease sent to uninitialised value");
+  // NSWarnLog(@"-autorelease sent to uninitialised value");
   return self;		// placeholders never get released.
 }
 
