@@ -1385,6 +1385,8 @@ static id gs_weak_load(id obj)
   NSDeallocateObject (self);
 }
 
+extern Class object_getPossiblyHiddenClass(id obj);
+
 - (void) finalize
 {
   Class	destructorClass = Nil;
@@ -1392,7 +1394,10 @@ static id gs_weak_load(id obj)
 #ifdef OBJC_SMALL_OBJECT_MASK
   if (((NSUInteger)self & OBJC_SMALL_OBJECT_MASK) == 0)
 #endif
-  destructorClass = object_getClass(self);
+  // destructorClass = object_getClass(self);
+  // We replace the above call with the one below which does not skip 
+  // hidden classes. This allows us to release associated objects.
+  destructorClass = object_getPossiblyHiddenClass(self);
 
   /* C++ destructors must be called in the opposite order to their
    * creators, so start at the leaf class and then go up the tree until we
