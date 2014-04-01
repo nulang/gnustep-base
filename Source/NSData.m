@@ -1338,9 +1338,9 @@ failure:
   wtheRealPath[length] = L'\0';
   error_BadPath = (length <= 0);
 #else
-  if ([path canBeConvertedToEncoding: [NSString defaultCStringEncoding]])
+  if ([path canBeConvertedToEncoding: NSUTF8StringEncoding])
     {	
-      const char *local_c_path = [path cString];
+      const char *local_c_path = [path cStringUsingEncoding:NSUTF8StringEncoding];
 
       if (local_c_path != 0 && strlen(local_c_path) < (BUFSIZ*2))
 	{	

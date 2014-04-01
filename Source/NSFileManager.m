@@ -2205,7 +2205,7 @@ static NSStringEncoding	defaultEncoding;
 - (const GSNativeChar*) fileSystemRepresentationWithPath: (NSString*)path
 {
   return
-    (const GSNativeChar*)[path cStringUsingEncoding: defaultEncoding];
+    (const GSNativeChar*)[path cStringUsingEncoding: NSUTF8StringEncoding];
 }
 - (NSString*) stringWithFileSystemRepresentation: (const GSNativeChar*)string
 					  length: (NSUInteger)len
